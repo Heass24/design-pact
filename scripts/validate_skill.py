@@ -49,6 +49,7 @@ def _check_skill_package(errors: list[str]) -> None:
         errors.append("SKILL.md is missing its scope or stop-condition contract")
     for relative in (
         "agents/openai.yaml",
+        "LICENSE",
         "README.md",
         "references/artifact-contract.md",
         "references/spec-quality.md",

@@ -1,5 +1,8 @@
 # Design Pact
 
+[![GitHub release](https://img.shields.io/github/v/release/Heass24/design-pact)](https://github.com/Heass24/design-pact/releases)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
 Design Pact is a Codex skill for building Figma-driven, traceable Android
 Jetpack Compose applications. It connects product scope, Figma evidence,
 specifications, acceptance criteria, test contracts, TDD evidence, visual
@@ -29,6 +32,12 @@ python3 "${CODEX_HOME:-$HOME/.codex}/skills/.system/skill-installer/scripts/inst
   --path . \
   --name design-pact \
   --ref main
+```
+
+For a reproducible installation, replace `main` with the current release tag:
+
+```text
+--ref v0.1.0
 ```
 
 Alternatively, clone the repository directly:
@@ -86,6 +95,11 @@ python3 -m unittest discover -s scripts/tests -p 'test_*.py'
 
 The validation suite creates temporary projects and does not prove a live
 Figma match, real-device behavior, or human visual approval.
+
+## License
+
+Design Pact is released under the [MIT License](LICENSE). Third-party material
+retains its original attribution in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
 
 ## Third-Party Notices
 
