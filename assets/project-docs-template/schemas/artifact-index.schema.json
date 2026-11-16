@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["entries"],
+  "properties": {
+    "entries": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "path",
+          "format",
+          "sha256",
+          "status",
+          "authority",
+          "validator",
+          "human_view",
+          "approval_required"
+        ],
+        "properties": {
+          "path": {"type": "string", "minLength": 1},
+          "format": {"type": "string", "minLength": 1},
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "status": {"type": "string", "minLength": 1},
+          "authority": {"type": "string", "minLength": 1},
+          "validator": {"type": "string", "minLength": 1},
+          "human_view": {"type": "string"},
+          "approval_required": {"type": "boolean"},
+          "artifact_id": {"type": "string"},
+          "artifact_type": {"type": "string"}
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": true
+}

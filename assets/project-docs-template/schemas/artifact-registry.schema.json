@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Design Pact stable Artifact ID registry",
+  "type": "object",
+  "required": ["artifact_type", "schema_version", "version", "entries"],
+  "properties": {
+    "artifact_type": {"const": "artifact_registry"},
+    "schema_version": {"const": "1.0"},
+    "version": {"type": "integer", "minimum": 1},
+    "entries": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["key", "artifact_id", "path", "artifact_type"],
+        "properties": {
+          "key": {"type": "string", "minLength": 1},
+          "artifact_id": {
+            "type": "string",
+            "pattern": "^ART-(?!000)[0-9]{3}$"
+          },
+          "path": {"type": "string", "minLength": 1},
+          "artifact_type": {"type": "string", "minLength": 1},
+          "lifecycle": {
+            "type": "string",
+            "enum": ["active", "tombstone"],
+            "default": "active"
+          },
+          "removed_at": {
+            "type": "string",
+            "minLength": 1
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "allOf": [
+          {
+            "if": {
+              "properties": {"lifecycle": {"const": "tombstone"}},
+              "required": ["lifecycle"]
+            },
+            "then": {"required": ["removed_at", "reason"]}
+          }
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

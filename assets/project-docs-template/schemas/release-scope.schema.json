@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Design Pact release scope",
+  "type": "object",
+  "required": [
+    "release_id",
+    "journey_ids",
+    "feature_ids",
+    "screen_ids",
+    "flow_ids",
+    "exclusions"
+  ],
+  "properties": {
+    "release_id": {"type": "string", "minLength": 1},
+    "journey_ids": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {"type": "string", "pattern": "^JRN-(?!000)[0-9]{3}$"}
+    },
+    "feature_ids": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {"type": "string", "pattern": "^FEAT-(?!000)[0-9]{3}$"}
+    },
+    "screen_ids": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {"type": "string", "pattern": "^SCREEN-(?!000)[0-9]{3}$"}
+    },
+    "flow_ids": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {"type": "string", "pattern": "^FLOW-(?!000)[0-9]{3}$"}
+    },
+    "exclusions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "reason"],
+        "properties": {
+          "id": {"type": "string", "minLength": 1},
+          "reason": {"type": "string", "minLength": 1}
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": true
+}

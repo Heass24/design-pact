@@ -1,0 +1,20 @@
+artifact_id: ART-001
+artifact_type: project_state
+schema_version: "1.0"
+version: 1
+owner: __PROJECT_OWNER__
+created_at_state: discovery
+status: draft
+source_ids: []
+upstream_sha256: ""
+approval_required: true
+state: discovery
+revision: 1
+design_snapshot:
+  status: unverified
+  file_keys: []
+  revision: ""
+blockers: []
+gate_evidence: {}
+release:
+  approval_id: ""

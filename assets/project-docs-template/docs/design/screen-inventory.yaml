@@ -1,0 +1,13 @@
+artifact_id: ART-020
+artifact_type: screen_inventory
+schema_version: "1.0"
+version: 1
+owner: design-contract-owner
+created_at_state: scope_defined
+status: draft
+source_ids: []
+upstream_sha256: ""
+approval_required: true
+screens: []
+flows: []
+states: []

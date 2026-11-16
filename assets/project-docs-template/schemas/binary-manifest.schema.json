@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Design Pact binary or visual evidence manifest",
+  "type": "object",
+  "required": ["artifact_id", "artifact_type", "schema_version", "version"],
+  "properties": {
+    "artifact_id": {"type": "string", "pattern": "^ART-(?!000)[0-9]{3}$"},
+    "artifact_type": {
+      "enum": [
+        "figma_reference",
+        "visual_report",
+        "visual_baseline",
+        "documentation_navigation",
+        "artifact_index",
+        "test_case_index",
+        "tdd_report"
+      ]
+    },
+    "schema_version": {"const": "1.0"},
+    "version": {"type": "integer"},
+    "path": {"type": "string"},
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "status": {
+      "enum": [
+        "draft",
+        "review",
+        "approved",
+        "blocked",
+        "removed",
+        "superseded",
+        "unverified",
+        "pass",
+        "fail"
+      ]
+    }
+  },
+  "additionalProperties": true
+}

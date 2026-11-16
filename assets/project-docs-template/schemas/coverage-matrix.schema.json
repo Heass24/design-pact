@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["objects"],
+  "properties": {
+    "objects": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "object_id",
+          "object_type",
+          "status",
+          "rationale",
+          "source_ids"
+        ],
+        "properties": {
+          "object_id": {
+            "type": "string",
+            "pattern": "^(JRN|FEAT|SCREEN|FLOW|STATE|INT|NFR)-(?!000)[0-9]{3}$"
+          },
+          "object_type": {
+            "enum": [
+              "journey",
+              "feature",
+              "screen",
+              "flow",
+              "state",
+              "interaction",
+              "non_functional"
+            ]
+          },
+          "status": {
+            "enum": ["covered", "out_of_scope", "deferred", "blocked"]
+          },
+          "rationale": {"type": "string", "minLength": 1},
+          "source_ids": {
+            "type": "array",
+            "items": {"type": "string", "minLength": 1}
+          },
+          "not_applicable_reason": {"type": "string"},
+          "approval_id": {"type": "string"}
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": true
+}

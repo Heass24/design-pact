@@ -1,0 +1,11 @@
+artifact_id: ART-026
+artifact_type: gaps
+schema_version: "1.0"
+version: 1
+owner: design-contract-owner
+created_at_state: discovery
+status: draft
+source_ids: []
+upstream_sha256: ""
+approval_required: false
+gaps: []

@@ -1,0 +1,34 @@
+artifact_id: ART-070
+artifact_type: visual_report
+schema_version: "1.0"
+version: 1
+owner: visual-reviewer
+created_at_state: verification
+status: draft
+source_ids: [SCREEN-001, STATE-001, SHOT-001]
+upstream_sha256: ""
+approval_required: true
+screen_id: SCREEN-001
+state_id: STATE-001
+shot_id: SHOT-001
+comparison_status: unverified
+figma_reference:
+  path: docs/design/figma-references/SCREEN-001-<slug>/STATE-001.png
+  sha256: 0000000000000000000000000000000000000000000000000000000000000000
+current:
+  path: docs/verification/visual-reports/SCREEN-001-<slug>/current/STATE-001.png
+  sha256: 0000000000000000000000000000000000000000000000000000000000000000
+diff:
+  path: docs/verification/visual-reports/SCREEN-001-<slug>/diff/STATE-001.png
+  sha256: 0000000000000000000000000000000000000000000000000000000000000000
+metrics:
+  key_region_geometry_dp: 0.0
+  figma_ssim: 0.0
+  figma_pixel_difference: 1.0
+  baseline_ssim: 0.0
+  baseline_pixel_difference: 1.0
+review:
+  reviewer: ""
+  reviewed_at: ""
+  conclusion: unverified
+  approval_id: ""

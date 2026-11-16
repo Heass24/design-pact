@@ -1,0 +1,29 @@
+artifact_id: ART-300
+artifact_type: test_case_contract
+schema_version: "1.0"
+version: 1
+owner: test-owner
+created_at_state: implementation
+status: draft
+source_ids: [SPEC-002]
+upstream_sha256: ""
+approval_required: true
+slice_id: SCREEN-001
+slice_type: screen
+spec_id: SPEC-002
+tests:
+  - test_id: TEST-001
+    ac_ids: [AC-001]
+    state_ids: [STATE-001]
+    title: Observable behavior
+    test_type: unit
+    priority: P0
+    planning_status: planned
+    precondition: Approved fixture is present
+    test_data: []
+    action: Invoke the approved behavior
+    expected: The exact observable result is present
+    accessibility_assertions: []
+    visual_shot_ids: [SHOT-001]
+    implementation_path: app/src/test/java/com/example/app/FeatureTest.kt
+    implementation_symbol: observableBehavior

@@ -1,0 +1,29 @@
+artifact_id: ART-301
+artifact_type: test_case_contract
+schema_version: "1.0"
+version: 1
+owner: test-owner
+created_at_state: implementation
+status: draft
+source_ids: [SPEC-003]
+upstream_sha256: ""
+approval_required: true
+slice_id: FLOW-001
+slice_type: flow
+spec_id: SPEC-003
+tests:
+  - test_id: TEST-001
+    ac_ids: [AC-001]
+    state_ids: [STATE-001]
+    title: Observable flow behavior
+    test_type: integration
+    priority: P0
+    planning_status: planned
+    precondition: Approved flow entry state is visible
+    test_data: []
+    action: Perform the approved transition action
+    expected: The approved destination state is visible
+    accessibility_assertions: []
+    visual_shot_ids: [SHOT-001]
+    implementation_path: app/src/test/java/com/example/app/FeatureTest.kt
+    implementation_symbol: observableFlowBehavior

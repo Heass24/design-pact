@@ -1,0 +1,11 @@
+artifact_id: ART-012
+artifact_type: journey_map
+schema_version: "1.0"
+version: 1
+owner: product-owner
+created_at_state: discovery
+status: draft
+source_ids: []
+upstream_sha256: ""
+approval_required: true
+journeys: []

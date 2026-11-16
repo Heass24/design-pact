@@ -1,0 +1,153 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Design Pact project state",
+  "type": "object",
+  "required": [
+    "artifact_id",
+    "artifact_type",
+    "schema_version",
+    "version",
+    "owner",
+    "created_at_state",
+    "status",
+    "source_ids",
+    "upstream_sha256",
+    "approval_required",
+    "state",
+    "revision",
+    "design_snapshot",
+    "blockers",
+    "gate_evidence",
+    "release"
+  ],
+  "properties": {
+    "artifact_id": {"type": "string", "pattern": "^ART-(?!000)[0-9]{3}$"},
+    "artifact_type": {"const": "project_state"},
+    "schema_version": {"const": "1.0"},
+    "version": {"type": "integer"},
+    "owner": {"type": "string", "minLength": 1},
+    "created_at_state": {"type": "string", "minLength": 1},
+    "status": {
+      "enum": ["draft", "review", "approved", "blocked", "removed", "superseded"]
+    },
+    "source_ids": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1}
+    },
+    "upstream_sha256": {
+      "type": "string",
+      "pattern": "^(|[0-9a-f]{64})$"
+    },
+    "approval_required": {"type": "boolean"},
+    "state": {
+      "enum": [
+        "discovery",
+        "scope_defined",
+        "design_contract_ready",
+        "project_initialized",
+        "design_system_ready",
+        "implementation",
+        "verification",
+        "released"
+      ]
+    },
+    "revision": {
+      "type": "integer"
+    },
+    "design_snapshot": {
+      "type": "object",
+      "required": ["status", "file_keys", "revision"],
+      "properties": {
+        "status": {
+          "enum": ["unverified", "structured", "stale"]
+        },
+        "file_keys": {
+          "type": "array",
+          "items": {"type": "string"}
+        },
+        "revision": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "blockers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "reason",
+          "owner",
+          "required_input",
+          "recovery_condition"
+        ],
+        "properties": {
+          "id": {"type": "string", "pattern": "^GAP-(?!000)[0-9]{3}$"},
+          "reason": {"type": "string", "minLength": 1},
+          "owner": {"type": "string", "minLength": 1},
+          "required_input": {"type": "string", "minLength": 1},
+          "recovery_condition": {"type": "string", "minLength": 1}
+        },
+        "additionalProperties": false
+      }
+    },
+    "gate_evidence": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["status", "conclusion", "recorded_at"],
+        "properties": {
+          "status": {
+            "enum": ["unverified", "passed", "failed", "blocked"]
+          },
+          "conclusion": {
+            "enum": ["pass", "fail", "unverified", "blocked"]
+          },
+          "recorded_at": {"type": "string"},
+          "commands": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["command", "exit_code", "log_path", "log_sha256"],
+              "properties": {
+                "command": {
+                  "type": "array",
+                  "minItems": 1,
+                  "items": {"type": "string", "minLength": 1}
+                },
+                "exit_code": {"type": "integer"},
+                "log_path": {"type": "string", "minLength": 1},
+                "log_sha256": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$"
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "summary": {"type": "string"},
+          "approval_id": {
+            "anyOf": [
+              {"type": "null"},
+              {"type": "string", "pattern": "^(|APR-(?!000)[0-9]{3,})$"}
+            ]
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "release": {
+      "type": "object",
+      "required": ["approval_id"],
+      "properties": {
+        "approval_id": {
+          "type": "string",
+          "pattern": "^(|APR-(?!000)[0-9]{3,})$"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,102 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "renderer",
+    "device",
+    "application",
+    "fixtures",
+    "thresholds",
+    "masks"
+  ],
+  "properties": {
+    "renderer": {
+      "type": "object",
+      "required": ["name", "version", "android_api"],
+      "properties": {
+        "name": {"type": "string"},
+        "version": {"type": "string"},
+        "android_api": {"type": "integer"}
+      },
+      "additionalProperties": true
+    },
+    "device": {
+      "type": "object",
+      "required": ["width_px", "height_px", "density_dpi", "orientation"],
+      "properties": {
+        "width_px": {"type": "integer"},
+        "height_px": {"type": "integer"},
+        "density_dpi": {"type": "integer"},
+        "orientation": {"enum": ["portrait", "landscape"]}
+      },
+      "additionalProperties": true
+    },
+    "application": {
+      "type": "object",
+      "required": [
+        "locale",
+        "font_scale",
+        "theme",
+        "animation_policy",
+        "font_files",
+        "timezone",
+        "clock"
+      ],
+      "properties": {
+        "locale": {"type": "string"},
+        "font_scale": {"type": "number"},
+        "theme": {"type": "string"},
+        "animation_policy": {"enum": ["disabled", "fixed_frame"]},
+        "font_files": {
+          "type": "array",
+          "items": {"type": "string"}
+        },
+        "timezone": {"type": "string"},
+        "clock": {"type": "string"}
+      },
+      "additionalProperties": true
+    },
+    "fixtures": {
+      "type": "object",
+      "required": ["clock", "timezone", "network"],
+      "properties": {
+        "clock": {"type": "string"},
+        "timezone": {"type": "string"},
+        "network": {"type": "string"}
+      },
+      "additionalProperties": true
+    },
+    "thresholds": {
+      "type": "object",
+      "required": [
+        "key_region_geometry_dp",
+        "figma_ssim",
+        "figma_pixel_difference",
+        "baseline_ssim",
+        "baseline_pixel_difference"
+      ],
+      "properties": {
+        "key_region_geometry_dp": {"type": "number"},
+        "figma_ssim": {"type": "number"},
+        "figma_pixel_difference": {"type": "number"},
+        "baseline_ssim": {"type": "number"},
+        "baseline_pixel_difference": {"type": "number"}
+      },
+      "additionalProperties": true
+    },
+    "masks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "reason", "approval_id"],
+        "properties": {
+          "id": {"type": "string", "minLength": 1},
+          "reason": {"type": "string", "minLength": 1},
+          "approval_id": {"type": "string", "minLength": 1}
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": true
+}

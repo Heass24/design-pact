@@ -1,0 +1,95 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Design Pact visual comparison report",
+  "type": "object",
+  "required": [
+    "screen_id",
+    "state_id",
+    "shot_id",
+    "comparison_status",
+    "figma_reference",
+    "current",
+    "diff",
+    "metrics",
+    "review"
+  ],
+  "properties": {
+    "screen_id": {
+      "type": "string",
+      "pattern": "^(SCREEN|FLOW)-(?!000)[0-9]{3}$"
+    },
+    "state_id": {
+      "type": "string",
+      "pattern": "^STATE-(?!000)[0-9]{3}$"
+    },
+    "shot_id": {
+      "type": "string",
+      "pattern": "^SHOT-(?!000)[0-9]{3}$"
+    },
+    "comparison_status": {
+      "enum": ["unverified", "pass", "fail", "blocked"]
+    },
+    "figma_reference": {"$ref": "#/$defs/imageEvidence"},
+    "current": {"$ref": "#/$defs/imageEvidence"},
+    "diff": {"$ref": "#/$defs/imageEvidence"},
+    "metrics": {
+      "type": "object",
+      "required": [
+        "key_region_geometry_dp",
+        "figma_ssim",
+        "figma_pixel_difference",
+        "baseline_ssim",
+        "baseline_pixel_difference"
+      ],
+      "properties": {
+        "key_region_geometry_dp": {"type": "number", "minimum": 0},
+        "figma_ssim": {"type": "number", "minimum": 0, "maximum": 1},
+        "figma_pixel_difference": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "baseline_ssim": {"type": "number", "minimum": 0, "maximum": 1},
+        "baseline_pixel_difference": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        }
+      },
+      "additionalProperties": true
+    },
+    "review": {
+      "type": "object",
+      "required": [
+        "reviewer",
+        "reviewed_at",
+        "conclusion",
+        "approval_id"
+      ],
+      "properties": {
+        "reviewer": {"type": "string"},
+        "reviewed_at": {"type": "string"},
+        "conclusion": {
+          "enum": ["unverified", "pass", "fail", "blocked"]
+        },
+        "approval_id": {"type": "string"}
+      },
+      "additionalProperties": true
+    }
+  },
+  "$defs": {
+    "imageEvidence": {
+      "type": "object",
+      "required": ["path", "sha256"],
+      "properties": {
+        "path": {"type": "string", "minLength": 1},
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}

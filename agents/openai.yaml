@@ -1,0 +1,6 @@
+interface:
+  display_name: "Design Pact · 设计契约"
+  short_description: "把 Figma 设计变为可追踪、可测试、可验收的 Compose 实现"
+  default_prompt: "Use $design-pact to turn the supplied Figma design into a scoped, test-backed Android Compose application."
+policy:
+  allow_implicit_invocation: true

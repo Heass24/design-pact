@@ -1,0 +1,11 @@
+artifact_id: ART-022
+artifact_type: token_map
+schema_version: "1.0"
+version: 1
+owner: design-contract-owner
+created_at_state: design_contract_ready
+status: draft
+source_ids: []
+upstream_sha256: ""
+approval_required: true
+tokens: []

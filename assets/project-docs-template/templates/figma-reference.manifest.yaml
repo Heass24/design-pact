@@ -1,0 +1,24 @@
+artifact_id: ART-050
+artifact_type: figma_reference
+schema_version: "1.0"
+version: 1
+owner: design-contract-owner
+created_at_state: design_contract_ready
+status: draft
+source_ids: [SCREEN-001, STATE-001]
+upstream_sha256: ""
+approval_required: false
+source_kind: figma-mcp
+structured: true
+file_key: FIGMA_FILE_KEY
+node_id: FIGMA_NODE_ID
+node_name: FIGMA_NODE_NAME
+revision: FIGMA_REVISION
+source_url: https://www.figma.com/design/FIGMA_FILE_KEY?node-id=FIGMA_NODE_ID
+screen_id: SCREEN-001
+state_id: STATE-001
+path: STATE-001.png
+sha256: 0000000000000000000000000000000000000000000000000000000000000000
+width_px: 1080
+height_px: 2400
+export_scale: 1.0

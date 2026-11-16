@@ -1,0 +1,38 @@
+artifact_id: ART-030
+artifact_type: visual_policy
+schema_version: "1.0"
+version: 1
+owner: visual-reviewer
+created_at_state: design_system_ready
+status: draft
+source_ids: []
+upstream_sha256: ""
+approval_required: true
+renderer:
+  name: ""
+  version: ""
+  android_api: 0
+device:
+  width_px: 0
+  height_px: 0
+  density_dpi: 0
+  orientation: portrait
+application:
+  locale: ""
+  font_scale: 1.0
+  theme: ""
+  animation_policy: disabled
+  font_files: []
+  timezone: ""
+  clock: ""
+fixtures:
+  clock: ""
+  timezone: ""
+  network: ""
+thresholds:
+  key_region_geometry_dp: 4.0
+  figma_ssim: 0.98
+  figma_pixel_difference: 0.02
+  baseline_ssim: 0.995
+  baseline_pixel_difference: 0.005
+masks: []
