@@ -21,27 +21,15 @@ assets. Missing evidence becomes a `GAP-###` and blocks the affected slice.
 
 ## Install in Codex From GitHub
 
-This repository is private by default. Authenticate `gh` on the destination
-machine first:
-
-```bash
-gh auth login
-```
-
 Install with Codex's bundled GitHub skill installer:
 
 ```bash
-GITHUB_TOKEN="$(gh auth token)" \
 python3 "${CODEX_HOME:-$HOME/.codex}/skills/.system/skill-installer/scripts/install-skill-from-github.py" \
   --repo Heass24/design-pact \
   --path . \
   --name design-pact \
   --ref main
 ```
-
-The explicit token lets the installer use its authenticated repository-download
-path. Without it, a private-repository fallback to sparse Git checkout can omit
-subdirectories when the skill is located at the repository root.
 
 Alternatively, clone the repository directly:
 
